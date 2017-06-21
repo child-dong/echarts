@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+  <button id="btn">替换</button>
+  <div id="main" style="width: 600px;height:400px;"></div>
+  <script src="js/echarts.js"></script>
+  <script src="china.js"></script>
+</body>
+</html>
+<script>
+  // 基于准备好的dom，初始化echarts实例
+  var myChart = echarts.init(document.getElementById('main'));
+  var btn = document.getElementById('btn');
+  var kinds = ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"];
+  var count = [5, 20, 36, 10, 10, 20];
+  var option = {
+    title: {
+        text: 'ECharts 入门示例'
+    },
+    tooltip: {},
+    legend: {
+        data:['销量']
+    },
+    xAxis: {
+        data: kinds
+    },
+    yAxis: {},
+    series: [{
+        name: '销量',
+        type: 'bar',
+        data: count
+    }]
+  };
+        // 使用刚指定的配置项和数据显示图表。
+  myChart.setOption(option);
+  var status = 0;
+  btn.onclick = function(){
+    if(status == 0){ 
+    var eKinds = ["衬衫","羊毛衫","雪纺衫","裤子"];
+    var eCount = [5, 20, 36, 10];
+    var option = {
+                title: {
+                    text: 'ECharts 入门示例'
+                },
+                tooltip: {},
+                legend: {
+                    data:['销量']
+                },
+                xAxis: {
+                    data: eKinds
+                },
+                yAxis: {},
+                series: [{
+                    name: '销量',
+                    type: 'bar',
+                    data: eCount
+                }]
+            };
+    myChart.setOption(option);
+    status = 1;
+    }else{
+      kinds = ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"];
+      count = [5, 20, 36, 10,10,20];
+      var option = {
+                title: {
+                    text: 'ECharts 入门示例'
+                },
+                tooltip: {},
+                legend: {
+                    data:['销量']
+                },
+                xAxis: {
+                    data: kinds
+                },
+                yAxis: {},
+                series: [{
+                    name: '销量',
+                    type: 'bar',
+                    data: count
+                }]
+            };
+      myChart.setOption(option);
+      status = 0;
+    }
+  }
+</script>
